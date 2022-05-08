@@ -96,14 +96,7 @@ $ python 06_doc2vec.py --phase infer # infer doc2vec vectors
         - **pivoted_lab.csv**: generated csv file from admissions, icustays, labevents table using pivoted-lab.sql in query folder.
         - **pivoted-vital.csv**: generated csv file from admissions, icustays, chartevents table using pivoted-vital.sql in query folder.
     - ```processed/```
-        - **demo.csv**: 
-        - **earlynotes.csv**:
-        - **features.csv**:
-        - **labels_icd.csv**:
-        - **llos.csv**:
-        - **los.csv**:
-        - **mortality.csv**:
-        - **readmit.csv**:
+        - ```demo.csv, earlynotes.csv, features.csv, labels_icd.csv, llos.csv, los.csv, mortality.csv, readmit.csv```: These files are generated
         - ```files/```
         - ```initial_data/```
         - ```resample_dir/```
@@ -228,7 +221,8 @@ optional arguments:
   --epochs N            number of total epochs to run
   
 ```
-1. Long Length Stay Predictive Task Metrics (Binary Classification)
+**1. Long Length Stay Predictive Task Metrics (Binary Classification)**
+
 
 | Model    |    Data   |   F1   |  AUROC |  AUPRC |  CPU RAM, Time     |  GPU RAM, Time    |
 |----------|:---------:|-------:|-------:|-------:|-------------------:|------------------:|
@@ -245,7 +239,8 @@ optional arguments:
 | CNN      |    U      | 0.8240 | 0.9079 | 0.9111 | 13.52GB, 2188.728s |  1.08GB, 2120.7s  |
 | CNN      | U + T + S | **0.8371** | **0.9197** | **0.9230** | **13.83GB, 2631.743s** |  **1.43GB, 2574.7s**  |
 
-2. 30-day Readmission Predictive Task Metrics (Binary Classification)
+**2. 30-day Readmission Predictive Task Metrics (Binary Classification)**
+
 
 | Model    |    Data   |   F1   |  AUROC |  AUPRC  |  CPU RAM, Time     |  GPU RAM, Time    |
 |----------|:---------:|-------:|-------:|--------:|-------------------:|------------------:|
@@ -262,7 +257,8 @@ optional arguments:
 | CNN      |    U      | 0.1690 | 0.7288 | 0.1294  | 14.20GB, 2029.463s |  1.32GB, 1971s    |
 | CNN      | U + T + S | **0.2092** | **0.7958** | **0.1811**  | **14.61GB, 2289.474s** |  **1.98GB, 2236.5s**  |
 
-3. In-hospital Mortality Predictive Task Metrics (Binary Classification)
+**3. In-hospital Mortality Predictive Task Metrics (Binary Classification)**
+
 
 | Model    |    Data   |   F1   |  AUROC |  AUPRC |   CPU RAM, Time    |  GPU RAM, Time    |
 |----------|:---------:|-------:|-------:|-------:|-------------------:|------------------:|
