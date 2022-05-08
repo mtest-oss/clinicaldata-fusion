@@ -216,6 +216,10 @@ optional arguments:
 ```
 
 ### Table of Results
+
+We reproduced results on 3 classification predictive tasks, _In-hospital mortality_, _long length of stay_, and _30-day readmission_ using Logistic regression, Random Forest, Fusion-CNN and Fusion-LSTM methods. The results showed that the Fusion-CNN outperformed other methods and yielded more accurate predictions by incorporating clinical notes for combined data. For logistic regression, using clinical notes only gave best performance. 
+
+_Here, T: Temporal Signals, U: unstructured clinical notes, and S: Static Demographic data_
   
 **1. Long Length Stay Predictive Task Metrics (Binary Classification)**
 
