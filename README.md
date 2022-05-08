@@ -263,21 +263,34 @@ optional arguments:
 | CNN      | U + T + S |        | | | |  0GB, 0s |
 
 3. In-hospital Mortality Predictive Task Metrics (Binary Classification)
+4. 
+
+
+
+
+
+
+
+
+
+
+
+
 
 | Model    |    Data   |   F1   |  AUROC |  AUPRC |  CPU RAM, Time  |  GPU RAM, Time  |
 |----------|:---------:|-------:|-------:|-------:|----------------:|----------------:|
-| LR       |  T + S    | 0.6684 | 0.7399 | 0.7303 | 2.40GB, 10.735s | 2.40GB, 10.735s |
-| LR       |    U      |        | | | |  0GB, 0s |
-| LR       | U + T + S |        | | | |  0GB, 0s |
-| RF       |  T + S    | 0.6684 | 0.7399 | 0.7303 | 2.40GB, 10.735s | 2.40GB, 10.735s |
-| RF       |    U      |        | | | |  0GB, 0s |
-| RF       | U + T + S |        | | | |  0GB, 0s |
-| LSTM     |  T + S    | 0.6684 | 0.7399 | 0.7303 | 2.40GB, 10.735s | 2.40GB, 10.735s |
-| LSTM     |    U      |        | | | | |
-| LSTM     | U + T + S |        |
-| CNN      |  T + S    | 0.6684 | 0.7399 | 0.7303 | 2.40GB, 10.735s | 2.40GB, 10.735s |
-| CNN      |    U      |        | | | | |
-| CNN      | U + T + S |        |
+| LR       |  T + S    | 0.3008 | 0.7399 | 0.7303 | 2.40GB, 10.735s | 2.40GB, 10.735s |
+| LR       |    U      | 0.5047 | | | |  0GB, 0s |
+| LR       | U + T + S | 0.4211 | | | |  0GB, 0s |
+| RF       |  T + S    | 0.3180 | 0.7399 | 0.7303 | 2.40GB, 10.735s | 2.40GB, 10.735s |
+| RF       |    U      | 0.4490 | | | |  0GB, 0s |
+| RF       | U + T + S | 0.4581 | | | |  0GB, 0s |
+| LSTM     |  T + S    | 0.3156 | 0.7399 | 0.7303 | 2.40GB, 10.735s | 2.40GB, 10.735s |
+| LSTM     |    U      | 0.4438 | | | | |
+| LSTM     | U + T + S | 0.4543 |
+| CNN      |  T + S    | 0.3524 | 0.7399 | 0.7303 | 2.40GB, 10.735s | 2.40GB, 10.735s |
+| CNN      |    U      | **0.5596** | | | | |
+| CNN      | U + T + S | 0.5289 |
 
 
 Welcome to contact me <manasag3@illinois.edu> for any question. Partial credit to https://github.com/onlyzdd/clinical-fusion.
