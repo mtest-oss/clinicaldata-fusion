@@ -128,10 +128,9 @@ $ python 06_doc2vec.py --phase infer # infer doc2vec vectors
 - **utils.py**:
 
 
-### Step 3: run the code
-### Run
+### Training and Evaluation code
 
-#### Baselines
+#### Baseline method (Machine Learning)
 
 Baselines (i.e., logistic regression, and random forest) are implemented using scikit-learn. To run:
 
@@ -151,7 +150,7 @@ optional arguments:
   --inputs INPUTS  3: T + S, 4: U, 7: U + T + S (default=4)
   ```
 
-#### Deep models
+#### Deep Learning method
 
 Fusion-CNN and Fusion-LSTM are implemented using PyTorch. To run:
 
@@ -215,6 +214,9 @@ optional arguments:
   --epochs N            number of total epochs to run
   
 ```
+
+### Table of Results
+  
 **1. Long Length Stay Predictive Task Metrics (Binary Classification)**
 
 
