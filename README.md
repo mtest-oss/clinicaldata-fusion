@@ -1,15 +1,4 @@
 # clinicaldata-fusion
-Documentation
-Citation to the original paper  .................................done
-Link to the original paper’s repo (if applicable) ................ done
-Dependencies --------------------------software requirement
-Data download instruction ------------------ done
-Preprocessing code + command (if applicable)--------- code?? done
-Training code + command (if applicable)
-Evaluation code + command (if applicable)
-Pretrained model (if applicable)
-Table of results (no need to include additional experiments, but main reproducibility result should be included)
-
 
 ## Data and Code for the paper "Combining structured and unstructured data for predictive models: a deep learning approach"
 
@@ -239,11 +228,56 @@ optional arguments:
   --epochs N            number of total epochs to run
   
 ```
+1. Long Length Stay Predictive Task Metrics (Binary Classification)
+
+| Model    |    Data   |   F1   |  AUROC |  AUPRC |  CPU RAM, Time    |  GPU RAM, Time  |
+|----------|:---------:|-------:|-------:|-------:|------------------:|----------------:|
+| LR       |  T + S    | 0.6684 | 0.7399 | 0.7303 | 2.40GB, 10.735s   |     0GB, 0s     |
+| LR       |    U      | 0.7613 | 0.8399 | 0.8206 | 10.92GB, 105.179s |     0GB, 0s     |
+| LR       | U + T + S | 0.7526 | 0.8302 | 0.8143 | 10.94GB, 112.077s |     0GB, 0s     |
+| RF       |  T + S    | 0.7026 | 0.7746 | 0.7580 | , 504.209s | 0GB, 0s |
+| RF       |    U      | 0.7586 | 0.8553 | 0.8503 | , 1650.264s |  0GB, 0s |
+| RF       | U + T + S | 0.7747 | 0.8656 | 0.8605 | ,1701.50s |  0GB, 0s |
+| LSTM     |  T + S    | 0.7111 | 0.7886 | 0.7744 | 11.64GB, 1812.1s   |  1.37GB, 1690.5s |
+| LSTM     |    U      | 0.8000 | 0.8851 | 0.8900 | 12.59GB, 2931.257s |  1.12GB, 2810.5s |
+| LSTM     | U + T + S | 0.8200 | 0.8996 | 0.9022 | 13.93GB, 1839.707s |  1.46GB, 1729.7s |
+| CNN      |  T + S    | 0.7197 | 0.7779 | 0.7560 | GB, 2983.568s | 0GB, 0s |
+| CNN      |    U      | 0.7943 | 0.8797 | 0.8824 | GB, 2188.728s | |  0GB, 0s |
+| CNN      | U + T + S | 0.7980 | 0.8808 | 0.8835 | GB, 631.743s |  0GB, 0s |
+
+2. 30-day Readmission Predictive Task Metrics (Binary Classification)
+
+| Model    |    Data   |   F1   |  AUROC |  AUPRC |  CPU RAM, Time  |  GPU RAM, Time  |
+|----------|:---------:|-------:|-------:|-------:|----------------:|----------------:|
+| LR       |  T + S    | 0.6684 | 0.7399 | 0.7303 | 2.40GB, 10.735s | 0GB, 0s |
+| LR       |    U      |        | | | |  0GB, 0s |
+| LR       | U + T + S |        | | | |  0GB, 0s |
+| RF       |  T + S    | 0.6684 | 0.7399 | 0.7303 | 2.40GB, 10.735s | 0GB, 0s |
+| RF       |    U      |        | | | |  0GB, 0s |
+| RF       | U + T + S |        | | | |  0GB, 0s |
+| LSTM     |  T + S    | 0.6684 | 0.7399 | 0.7303 | 2.40GB, 10.735s | 2.40GB, 10.735s |
+| LSTM     |    U      |        | | | |  0GB, 0s |
+| LSTM     | U + T + S |        | | | |  0GB, 0s |
+| CNN      |  T + S    | 0.6684 | 0.7399 | 0.7303 | 2.40GB, 10.735s | 2.40GB, 10.735s |
+| CNN      |    U      |        | | | |  0GB, 0s |
+| CNN      | U + T + S |        | | | |  0GB, 0s |
+
+3. In-hospital Mortality Predictive Task Metrics (Binary Classification)
 
 | Model    |    Data   |   F1   |  AUROC |  AUPRC |  CPU RAM, Time  |  GPU RAM, Time  |
 |----------|:---------:|-------:|-------:|-------:|----------------:|----------------:|
 | LR       |  T + S    | 0.6684 | 0.7399 | 0.7303 | 2.40GB, 10.735s | 2.40GB, 10.735s |
-| LR       |    U      |        |
-| LR       | U + T + S |        |
-    
+| LR       |    U      |        | | | |  0GB, 0s |
+| LR       | U + T + S |        | | | |  0GB, 0s |
+| RF       |  T + S    | 0.6684 | 0.7399 | 0.7303 | 2.40GB, 10.735s | 2.40GB, 10.735s |
+| RF       |    U      |        | | | |  0GB, 0s |
+| RF       | U + T + S |        | | | |  0GB, 0s |
+| LSTM     |  T + S    | 0.6684 | 0.7399 | 0.7303 | 2.40GB, 10.735s | 2.40GB, 10.735s |
+| LSTM     |    U      |        | | | | |
+| LSTM     | U + T + S |        |
+| CNN      |  T + S    | 0.6684 | 0.7399 | 0.7303 | 2.40GB, 10.735s | 2.40GB, 10.735s |
+| CNN      |    U      |        | | | | |
+| CNN      | U + T + S |        |
+
+
 Welcome to contact me <manasag3@illinois.edu> for any question. Partial credit to https://github.com/onlyzdd/clinical-fusion.
