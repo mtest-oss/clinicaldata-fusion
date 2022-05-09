@@ -112,20 +112,20 @@ $ python 06_doc2vec.py --phase infer # infer doc2vec vectors
 - **04_statistics.py**: preprocessing file: run statistics
 - **05_preprocess.py**: preprocessing file: run preprocessing
 - **06_doc2vec.py**: train and infer doc2vec model
-- **README.md**:
+- **README.md**: Readme file
 - **baselines.py**: This file process input commands for traditional methods (random-forest, logistic regression).
-- **ci.py**:
+- **ci.py**: ci functions
 - **cnn.py**: Fusion-CNN architecture
-- **data_loader.py**:
-- **function.py**:
-- **getram.py**:
+- **data_loader.py**: Data loader file
+- **function.py**: Support functions
+- **getram.py**: Get RAM and GPU ram
 - **lstm.py**: Fusion-LSTM architecture
 - **main.py**: Main file which process input commands for Fusion-LSTM/Fusion-CNN methods. (Deep learning methods).
-- **myloss.py**:
-- **p_value.py**:
+- **myloss.py**: Loss functions
+- **p_value.py**: p value functions
 - **py_op.py**:
 - **run_baselines.sh**: Might not need this.
-- **utils.py**:
+- **utils.py**: utility file for icd conversion.
 
 
 ### Training and Evaluation code
@@ -147,7 +147,7 @@ optional arguments:
   -h, --help       show this help message and exit
   --task TASK      mortality, readmit, llos (default:mortality)
   --model MODEL    all, lr, or rf (default:all)
-  --inputs INPUTS  3: T + S, 4: U, 7: U + T + S (default=4)
+  --inputs INPUTS  1:S, 3: T + S, 4: U, 7: U + T + S (default=4)
   ```
 
 #### Deep Learning method
@@ -175,43 +175,43 @@ usage: main.py [-h] [--inputs INPUTS] [--data-dir DATA_DIR] [--task S]
 clinical fusion help
 optional arguments:
   -h, --help            show this help message and exit
-  --inputs INPUTS       selected and preprocessed data directory
-  --data-dir DATA_DIR   selected and preprocessed data directory
-  --task S              start from checkpoints
+  --inputs INPUTS       selected and preprocessed data directory (default:3)
+  --data-dir DATA_DIR   selected and preprocessed data directory (default:./data)
+  --task S              start from checkpoints (default:mortality)
   --last-time last event time
-                        last time
-  --time-range TIME_RANGE
-  --n-code N_CODE       at most n codes for same visit
-  --n-visit N_VISIT     at most input n visits
+                        last time (default:4)
+  --time-range TIME_RANGE (default:10000)
+  --n-code N_CODE       at most n codes for same visit (default:8)
+  --n-visit N_VISIT     at most input n visits (default:)24
   --model MODEL, -m MODEL
-                        model
+                        model (default:'lstm')
   --split-num split num
-                        split num
+                        split num (default:4000)
   --split-nor split normal range
-                        split num
+                        split num (default:200)
   --use-glp use global pooling operation
-                        use global pooling operation
+                        use global pooling operation (default:0)
   --use-value use value embedding as input
-                        use value embedding as input
+                        use value embedding as input (default:1)
   --use-cat use cat for time and value embedding
-                        use cat or add
+                        use cat or add (default:1)
   --embed-size EMBED SIZE
-                        embed size
-  --rnn-size rnn SIZE   rnn size
+                        embed size (default:200)
+  --rnn-size rnn SIZE   rnn size (default:200)
   --hidden-size hidden SIZE
-                        hidden size
+                        hidden size (default:200)
   --num-layers num layers
-                        num layers
-  --phase PHASE         train/test phase
+                        num layers (default:2)
+  --phase PHASE         train/test phase (default:train)
   --batch-size BATCH SIZE, -b BATCH SIZE
-                        batch size
+                        batch size (default:64)
   --model-path MODEL_PATH
-                        model path
+                        model path (default='models/best.ckpt')
   --resume S            start from checkpoints
   --workers N           number of data loading workers (default: 32)
-  --lr LR, --learning-rate LR
+  --lr LR, --learning-rate LR (default: 0.001)
                         initial learning rate
-  --epochs N            number of total epochs to run
+  --epochs N            number of total epochs to run (default: 50)
   
 ```
 
