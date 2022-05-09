@@ -27,7 +27,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Baseline Model")
     parser.add_argument('--task', help="mortality, readmit, llos (default:mortality)", type=str, default='mortality') # mortality, readmit, or llos
     parser.add_argument('--model', help="all, lr, or rf (default:all)", type=str, default='all') # all, lr, or rf
-    parser.add_argument('--inputs', help="3: T + S, 4: U, 7: U + T + S (default=4)", type=int, default=4) # 3: T + S, 4: U, 7: U + T + S
+    parser.add_argument('--inputs', help="1: S, 3: T + S, 4: U, 7: U + T + S (default=4)", type=int, default=4) # 3: T + S, 4: U, 7: U + T + S
     args = parser.parse_args()
     #print("args")
     return args
@@ -109,6 +109,8 @@ if __name__ == '__main__':
     #print("type of train_ids", type(train_ids), train_ids)
     
     choices = '{0:b}'.format(inputs).rjust(3, '0')
+    print("CHOICES", choices)
+
     X_train, X_test = [], []
 
     if choices[0] == '1':

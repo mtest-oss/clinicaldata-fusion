@@ -109,6 +109,7 @@ class CNN(nn.Module):
             nn.Dropout ( 0.1),
             nn.Linear ( args.rnn_size, output_size),
         )
+
         self.output = nn.Sequential (
             nn.Linear (args.rnn_size, args.rnn_size),
             nn.ReLU ( ),
@@ -215,24 +216,25 @@ class CNN(nn.Module):
             content = content.view((content.size(0), -1))
             return self.one_output(content)
 
+        if x is not None:
         # value embedding
-        x = self.value_order_embedding(x)
-        x = self.visit_pooling(x)
+          x = self.value_order_embedding(x)
+          x = self.visit_pooling(x)
 
         # time embedding
         # t = self.value_embedding(t)
         # x = self.tv_mapping(torch.cat((x, t), 2))
 
         # cnn
-        x = torch.transpose(x, 1, 2,).contiguous()
-        out = self.bn1(x)
-        out = self.relu(out)
-        out = self.layer1(out)
+          x = torch.transpose(x, 1, 2,).contiguous()
+          out = self.bn1(x)
+          out = self.relu(out)
+          out = self.layer1(out)
         # out = self.layer2(out)
         # out = self.layer3(out)
 
-        output = self.pooling(out)                                       # (64*30, 200, 1)
-        output = output.view((output.size(0), -1))
+          output = self.pooling(out)                                       # (64*30, 200, 1)
+          output = output.view((output.size(0), -1))
 
 
         if len(dd.size()) > 1:
@@ -243,8 +245,14 @@ class CNN(nn.Module):
             d = torch.transpose(d, 1,2).contiguous()                  # (64*30, 200, 100)
             d = self.pooling(d)
             d = d.view((d.size(0), -1))
-            output = torch.cat((output, d), 1)
-            out = self.cat_output(output)
+            if x is not None:
+              output = torch.cat((output, d), 1)
+              out = self.cat_output(output)
+            else:
+              out = d
+              out = self.output(out)
+            #print("out.shape", out.shape)
+            
         # else:
         #     out = self.output(output)
 

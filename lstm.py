@@ -125,6 +125,12 @@ class LSTM(nn.Module):
                 nn.Linear ( args.embed_size, output_size),
             )
 
+        self.newoutput = nn.Sequential (
+            nn.Linear (args.rnn_size, args.rnn_size),
+            nn.ReLU ( ),
+            nn.Dropout ( 0.1),
+            nn.Linear ( args.rnn_size, output_size),
+        )
 
     def visit_pooling(self, x):
         output = x
@@ -148,7 +154,7 @@ class LSTM(nn.Module):
         return x
 
 
-    def forward(self, x, t, dd=None, content=None):
+    def forward(self, x, t, dd, content=None):
 
         #if 0 and content is not None:
         if dd is None:
@@ -160,9 +166,10 @@ class LSTM(nn.Module):
             content = content.view((content.size(0), -1))
             return self.one_output(content)
 
+        if x is not None:
         # value embedding
-        x = self.value_order_embedding(x)
-        x = self.visit_pooling(x)
+          x = self.value_order_embedding(x)
+          x = self.visit_pooling(x)
 
         # demo embedding
         dsize = list(dd.size()) + [-1]
@@ -171,7 +178,9 @@ class LSTM(nn.Module):
         d = torch.transpose(d, 1,2).contiguous()                  # (64*30, 200, 100)
         d = self.pooling(d)
         d = d.view((d.size(0), -1))
-
+        if x is None:
+          out = self.newoutput(d)
+          return out
         # x = torch.cat((x, d), 2)
         # x = self.dx_mapping(x)
 

@@ -48,10 +48,10 @@ args.value_embedding = 'use_order'
 args.epochs=50
 print ('epochs,', args.epochs)
 print("args.input", args.inputs)
-## This is not supported:Manasa
+## This is not supported
 args.use_unstructure = 0
 
-#args.task = 'mortality' #Manasa take input from input arg.
+#args.task = 'mortality' 
 args.files_dir = args.files_dir
 args.data_dir = args.data_dir
 print("args.model = ", args.model)
@@ -119,10 +119,20 @@ def train_eval(data_loader, net, loss, epoch, optimizer, best_metric, phase='tra
             #print("args value embedding: index_Value")
             data = index_value(data)
 
+        #print("demo!!!!!", demo)
+
         dtime = Variable(_cuda(dtime)) 
         demo = Variable(_cuda(demo)) 
         content = Variable(_cuda(content)) 
         label = Variable(_cuda(label))
+
+        #print("label", label.shape)
+        #print("demo", demo.shape)
+
+        if args.inputs==1:
+          #print("args input is 1, no content") 
+          output = net(None, dtime, demo)
+
         if args.inputs==3:
           #print("args input is 3, no content") 
           output = net(data, dtime, demo)
@@ -130,7 +140,6 @@ def train_eval(data_loader, net, loss, epoch, optimizer, best_metric, phase='tra
         if args.inputs==4: 
           #print("args input is 4, no demo, only content")
           output = net(data, dtime, None, content)
-        
         
         if args.inputs==7: 
           #print("args input is 7, all data")
@@ -276,17 +285,17 @@ import threading
 
 if __name__ == '__main__':
     print(args)
-#    stop_threads = False
-#    t1 = threading.Thread(target = getGPURAM)
+    stop_threads = False
+    t1 = threading.Thread(target = getGPURAM)
     ###t3 = threading.Thread(target = getCPURAM)
-#    t2 = threading.Thread(target = psutilvm)
-#    t1.start()
-#    t2.start()
+    t2 = threading.Thread(target = psutilvm)
+    t1.start()
+    t2.start()
     #tracemalloc.start()
     main()
-#    stop_threads=True
-#    updatestop(stop_threads)
-#    t1.join()
-#    t2.join()
+    stop_threads=True
+    updatestop(stop_threads)
+    t1.join()
+    t2.join()
     #print(tracemalloc.get_traced_memory())
     #tracemalloc.stop()
